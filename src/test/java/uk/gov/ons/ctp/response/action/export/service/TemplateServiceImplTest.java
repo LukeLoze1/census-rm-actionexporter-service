@@ -109,7 +109,7 @@ public class TemplateServiceImplTest {
     Template template = cfg.getTemplate("initialPrint.ftl");
     Mockito.when(configuration.getTemplate("initialPrint")).thenReturn(template);
     ByteArrayOutputStream os = templateService.stream(testBusinessActionRequest(), "initialPrint");
-    assertEquals("SampleUnitRef:testIac:InProgress:Pending:Created:Richard:Weeks:richard.weeks@ons.gov.uk:null\n", os.toString());
+    assertEquals("SampleUnitRef:testIac:InProgress:Pending:Created:Richard:Weeks:richard.weeks@ons.gov.uk:LL\n", os.toString());
   }
 
   private static List<ActionRequestInstruction> testBusinessActionRequest() {
@@ -127,6 +127,7 @@ public class TemplateServiceImplTest {
     contact.setEmailAddress("richard.weeks@ons.gov.uk");
     result.setContact(contact);
     result.setAddress(address);
+    result.setRegion("LL");
     return Collections.singletonList(result);
   }
 
